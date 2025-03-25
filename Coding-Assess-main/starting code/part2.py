@@ -41,7 +41,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 # We can use Random Forest here. It is an ensemble method that can handle categorical and numerical data without needing scaling. It is less prone to overfitting compared to one decision tree.
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
-model = RandomForestClassifier(random_state = 42)
+model = RandomForestClassifier(random_state=42)
 model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 print("Accuracy: ", accuracy_score(y_test, y_pred))
@@ -64,4 +64,4 @@ print("\Confusion Matrix:\n", conf_matrix")
 # Findings / Further documentation: Random Forest performs well. We could tune its hyperparameters using grid search or randomized search.
 # We could consider advanced models like XGBoost or LightGBM to improve performance since the dataset is imbalanced.
 # We could adjust for class imbalance with the synthetic minority over-sampling technique.
-# We could use cross-validation instead of one train-test split.
+# We could use cross-validation instead of one train-test split to better estimate model performance.
