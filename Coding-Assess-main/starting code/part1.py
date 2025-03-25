@@ -19,6 +19,7 @@ def fetch_fred_yield(series_id, start_date="2023-01-01", end_date="2023-12-31", 
     if response.status_code != 200:
       print(f"Error fetching {series_id}: {response.status_code}")
       return pd.DataFrame()
+    # FRED does not paginate, so I don't think we need to do anything with respect to it here.
     # Convert response JSON into a DataFrame, setting 'date' as index
     json_data = response.json()
     print(json_data)
