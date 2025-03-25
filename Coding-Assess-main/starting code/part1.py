@@ -1,6 +1,8 @@
 vaimport requests
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 def fetch_fred_yield(series_id, start_date="2023-01-01", end_date="2023-12-31", api_key="c33bc0ccdfcb244124f432a3edfc4f7a"):
     # Define the API URL and parameters here
@@ -67,4 +69,20 @@ def calculate_spreads(bond_data, treasury_data):
     return pd.DataFrame(spreads)
           
 file_path = "data/Part 1. bonds_yields.xlsx"
-spread_data = calculate_spreads(pd.read_excel(file_path, sheet_name=0), data_complete)                                
+spread_data = calculate_spreads(pd.read_excel(file_path, sheet_name=0), data_complete)
+
+#Visualizations. First is a boxplot of the bond spread distribution by sector. Second is a scatter plot of bond spreads vs. WAL.
+def plot_spread_distribution(spread_data):
+    plt.figure(figsize=(12, 6))
+    sns.boxplot(x="Sector", y="Spread", data=spread_data)
+    plt.xticks(rotation=45) #rotating x-axis tick labels since they're long
+    plt.title("Bond Spread Distribution by Sector")
+    plt.show()
+def plot_spread_vs_wal(spread_data):
+    plt.figure(figsize=(12, 6))
+    sns.boxplot(x="WAL", y="Spread", hue="Sector", data=spread_data, alpha=0.7) #slightly transparent
+    plt.title("Bond Spreads vs. Weighted Average Life (WAL)")
+    plt.xlabel("Weighted Average Life (WAL)")
+    plt.ylabel("Spread")
+    plt.legend(title="Sector")
+    plt.show()
