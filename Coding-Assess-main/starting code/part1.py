@@ -64,7 +64,7 @@ def calculate_spreads(bond_data, treasury_data):
             lower, upper = nearest_tenors[index - 1], nearest_tenors[index + 1]
             lower_yield = treasury_data[f"DGS{int(lower)}"].mean()
             upper_yield = treasury_data[f"DGS{int(upper)}"].mean()
-            treasury_yield = np.interp(wal, [lower, upper], [lower_yield, upper_yield]) #returns the estimated treasury yield for wal based on the relationship between the lower and upper tenors and the lower and upper treasury yields, or the nearest points to wal
+            treasury_yield = np.interp(wal, [lower, upper], [lower_yield, upper_yield]) #returns the estimated treasury yield for wal based on the relationship between the lower and upper tenors and the lower and upper treasury yields, or the nearest tenors to wal
         spread = yield_rate - treasury_yield
         spreads.append({"Sector": sector, "WAL": wal, "Spread": spread})
     return pd.DataFrame(spreads)
