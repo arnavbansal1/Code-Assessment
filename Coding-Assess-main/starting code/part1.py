@@ -26,7 +26,7 @@ def fetch_fred_yield(series_id, start_date="2023-01-01", end_date="2023-12-31", 
     df["date"] = pd.to_datetime(df["date"])
     df.set_index("date", inplace = True)
     # Convert the 'value' column to numeric and rename it based on series_id
-    df["value"] = pd.to_numeric(df["value", errors="coerce"]) # we do not want this to throw an exception but to set an invalid parsing as NaN
+    df["value"] = pd.to_numeric(df["value"], errors="coerce"]) # we do not want this to throw an exception but to set an invalid parsing as NaN
     df.rename(columns={"value" : series_id}, in_place = True)                            
     return df[[series_id]]  # Final DataFrame with date index and yield column
                                 
