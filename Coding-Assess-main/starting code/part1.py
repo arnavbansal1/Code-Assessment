@@ -54,9 +54,9 @@ def calculate_spreads(bond_data, treasury_data):
     spreads = []
     tenors = [float(k[3:]) / 12 if "MO" in k else float(k[3:]) for k in tenor_series_ids] # we are converting the text-based ids to numeric represenations for the tenors based on whether they are months or years
     for _, row in bond_data.iterrows():
-        wal = row["WAL"]
+        wal = row["WAL (years)"]
         sector = row["Sector"]
-        yield_rate = row["Yield"]
+        yield_rate = row["Yield (%)"]
         index = sorted(tenors + [wal]).index(wal)
         if wal in tenors:
             treasury_yield = treasury_data[f"DGS{int(wal)}"].mean()
