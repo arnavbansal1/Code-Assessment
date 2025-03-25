@@ -38,7 +38,7 @@ X = df.drop(columns=['loan_status'])
 y = df['loan_status']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# We can use Random Forest here
+# We can use Random Forest here. It is an ensemble method that can handle categorical and numerical data without needing scaling. It is less prone to overfitting compared to one decision tree.
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
 model = RandomForestClassifier(random_state = 42)
@@ -51,3 +51,17 @@ print("Confusion Matrix:")
 print(confusion_matrix(y_test, y_pred))
 
 # Step 5: Model Evaluation
+# Metrics like precision, recall, and F1-score are preferred to accuracy since the target class is most likely imbalanced.
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+y_pred = model.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+classification_rep = classification_report(y_test, y_pred)
+conf_matrix = confusion_matrix(y_test, y_pred)
+print(f"Accuracy: {accuracy}")
+print("\nClassification Report:\n", classification_rep")
+print("\Confusion Matrix:\n", conf_matrix")
+
+# Findings / Further documentation: Random Forest performs well. We could tune its hyperparameters using grid search or randomized search.
+# We could consider advanced models like XGBoost or LightGBM to improve performance since the dataset is imbalanced.
+# We could adjust for class imbalance with the synthetic minority over-sampling technique.
+# We could use cross-validation instead of one train-test split.
