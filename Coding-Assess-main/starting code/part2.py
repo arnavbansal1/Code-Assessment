@@ -16,7 +16,7 @@ df['person_age'].fillna(df['person_age'].median(), in_place=True)
 df['person_gender'].fillna(df['person_gender'].mode()[0], in_place=True)
 
 # One-hot encoding for categorical columns with more than two categories
-df = pd.get_dummies(df, columns=['person_gender', 'person_education', 'loan_intent', 'loan_type', drop_first=True])
+df = pd.get_dummies(df, columns=['person_gender', 'person_education', 'loan_intent', 'loan_type'], drop_first=True)
 # Label encoding for binary categorical features
 from sklearn.preprocessing import LabelEncoder
 df['loan_status'] = LabelEncoder().fit_transform(df['loan_status'])
