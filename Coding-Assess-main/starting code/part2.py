@@ -59,7 +59,7 @@ classification_rep = classification_report(y_test, y_pred)
 conf_matrix = confusion_matrix(y_test, y_pred)
 print(f"Accuracy: {accuracy}")
 print("\nClassification Report:\n", classification_rep)
-print("\Confusion Matrix:\n", conf_matrix")
+print("\Confusion Matrix:\n", conf_matrix)
 
 # Findings / Further documentation: Random Forest performs well. We could tune its hyperparameters using grid search or randomized search.
 # We could consider advanced models like XGBoost or LightGBM to improve performance since the dataset is imbalanced.
