@@ -78,6 +78,7 @@ def plot_spread_distribution(spread_data):
     plt.xticks(rotation=45) #rotating x-axis tick labels since they're long
     plt.title("Bond Spread Distribution by Sector")
     plt.show()
+         
 def plot_spread_vs_wal(spread_data):
     plt.figure(figsize=(12, 6))
     sns.boxplot(x="WAL", y="Spread", hue="Sector", data=spread_data, alpha=0.7) #slightly transparent
