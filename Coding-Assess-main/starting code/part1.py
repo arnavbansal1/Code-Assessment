@@ -87,3 +87,7 @@ def plot_spread_vs_wal(spread_data):
     plt.ylabel("Spread")
     plt.legend(title="Sector")
     plt.show()
+
+plot_spread_distribution(spread_data)
+plot_spread_vs_wal(spread_data)
+
