@@ -58,7 +58,7 @@ accuracy = accuracy_score(y_test, y_pred)
 classification_rep = classification_report(y_test, y_pred)
 conf_matrix = confusion_matrix(y_test, y_pred)
 print(f"Accuracy: {accuracy}")
-print("\nClassification Report:\n", classification_rep")
+print("\nClassification Report:\n", classification_rep)
 print("\Confusion Matrix:\n", conf_matrix")
 
 # Findings / Further documentation: Random Forest performs well. We could tune its hyperparameters using grid search or randomized search.
