@@ -52,7 +52,7 @@ print(df.shape[0])
 # Spread calculation using linear interpolation of Treasury yields
 def calculate_spreads(bond_data, treasury_data):
     spreads = []
-    tenors = [float(k[3:]) / 12 if "MO" in k else float(k[3:]) for k in tenor_series_ids] # we are converting the text-based ids to numeric representations for the tenors based on whether they are months or years
+    tenors = [float(k[3:len(k)-2]) / 12 if "MO" in k else float(k[3:]) for k in tenor_series_ids] # we are converting the text-based ids to numeric representations for the tenors based on whether they are months or years
     for _, row in bond_data.iterrows():
         wal = row["WAL (years)"]
         sector = row["Sector"]
